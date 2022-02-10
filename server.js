@@ -26,8 +26,10 @@ wss.on('connection', (ws) => {
 });
 
 wss.broadcast = function broadcast(msg){
+  const msgNuevo = msg.toString('utf8');
+  console.log("MSGJ",msgNuevo);
   wss.clients.forEach(function each(client){
-    client.send(JSON.stringify(msg));
+    client.send(msgNuevo);
   });
 }
 
